@@ -8,6 +8,7 @@ package softwaremodelingdesigncourseproject;
 /**
  *
  * @author Alec Shunnarah
+ * @author Donald Tran
  */
 public class SoftwareModelingDesignCourseProject {
 
