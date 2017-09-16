@@ -8,6 +8,7 @@ package softwaremodelingdesigncourseproject;
 /**
  *
  * @author Alec Shunnarah
+ * @author Donald Tran
  */
 public class SoftwareModelingDesignCourseProject {
 
@@ -17,5 +18,4 @@ public class SoftwareModelingDesignCourseProject {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
 }
