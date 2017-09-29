@@ -1,0 +1,52 @@
+CREATE DATABASE SMD_DB;
+
+CREATE TABLE tblProduct (
+    ProductID int not null primary key, 
+    Name varchar(255),
+    Price float,
+    Count int,
+    Vendor varchar(255)
+);
+
+CREATE TABLE tblOrder (
+    OrderID int not null primary key,
+    Time Datetime,
+    Subtotal double
+);
+
+CREATE TABLE tblOrderLine (
+    OrderLineID int not null primary key,
+    OrderID int not null,
+    ProductID int not null,
+    OrderLineCount int,
+    OrderLineTotal float,
+    FOREIGN KEY(OrderID) REFERENCES tblOrder(OrderID), 
+    FOREIGN KEY(ProductID) REFERENCES Product(ProductID)  
+);
+
+CREATE TABLE tblUser (
+    UserID int not null primary key,
+    Name varchar(255) 
+);
+
+INSERT INTO tblProduct (ProductID, Name, Price, Count, Vendor)
+VALUES (1, 'Banana', 3.75, 65, 'Chiquita');
+INSERT INTO tblProduct (ProductID, Name, Price, Count, Vendor)
+VALUES (2, 'Milk', 3.50, 74, 'Kroger');
+INSERT INTO tblProduct (ProductID, Name, Price, Count, Vendor)
+VALUES (3, 'Protein Bar', 3.00, 78, 'Clif');
+INSERT INTO tblProduct (ProductID, Name, Price, Count, Vendor)
+VALUES (4, 'Steak', 15.00, 13, 'PrimeRibCo');
+INSERT INTO tblProduct (ProductID, Name, Price, Count, Vendor)
+VALUES (5, 'Beef', 5.99, 33, 'PrimeRibCo');
+
+INSERT INTO tblOrder (OrderID, Time, Subtotal)
+VALUES (1, '2017-03-04', 56.23);
+INSERT INTO tblOrder (OrderID, Time, Subtotal)
+VALUES (2, '2017-04-05', 40.22);
+INSERT INTO tblOrder (OrderID, Time, Subtotal)
+VALUES (3, '2017-04-04', 89.00);
+INSERT INTO tblOrder (OrderID, Time, Subtotal)
+VALUES (4, '2017-03-03', 14.44);
+INSERT INTO tblOrder (OrderID, Time, Subtotal)
+VALUES (5, '2017-03-05', 33.23);
