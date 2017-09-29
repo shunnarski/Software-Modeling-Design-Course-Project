@@ -2,31 +2,32 @@ CREATE DATABASE SMD_DB;
 
 CREATE TABLE tblProduct (
     ProductID int not null primary key, 
-    Name varchar(255),
-    Price float,
-    Count int,
-    Vendor varchar(255)
+    Name varchar(255) not null,
+    Price float not null,
+    Count int not null,
+    Vendor varchar(255) not null
 );
 
 CREATE TABLE tblOrder (
     OrderID int not null primary key,
-    Time Datetime,
-    Subtotal double
+    Time Datetime not null,
+    Subtotal double not null
 );
 
 CREATE TABLE tblOrderLine (
     OrderLineID int not null primary key,
     OrderID int not null,
     ProductID int not null,
-    OrderLineCount int,
-    OrderLineTotal float,
-    FOREIGN KEY(OrderID) REFERENCES tblOrder(OrderID), 
-    FOREIGN KEY(ProductID) REFERENCES Product(ProductID)  
+    OrderLineCount int not null,
+    OrderLineTotal float not null,
+    FOREIGN KEY (OrderID) REFERENCES tblOrder(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES tblProduct(ProductID)
+    
 );
 
 CREATE TABLE tblUser (
     UserID int not null primary key,
-    Name varchar(255) 
+    Name varchar(255) not null
 );
 
 INSERT INTO tblProduct (ProductID, Name, Price, Count, Vendor)
