@@ -27,6 +27,7 @@ class Product {
     private double Price;
     private int Count;
     private String Vendor;
+    private LocalDateTime ExpirationDate;
     
     // constructor for Product
     public Product(int ProductID, String Name, double Price, int Count, String Vendor){
@@ -80,14 +81,19 @@ class Product {
 
 class Order{
     private int OrderID;
-    private LocalDateTime Time;
+    private LocalDateTime OrderDate;  
     private double SubTotal;
+    private double changeAmt;
+    private double taxRate;
     
     // constructor for order
-    public Order(int OrderID, LocalDateTime Time, double SubTotal){
+    public Order(int OrderID, LocalDateTime Date, double SubTotal, double changeAmt, double taxRate){
         this.OrderID = OrderID;
-        this.Time = Time;
+        this.OrderDate = Date;
         this.SubTotal = SubTotal;
+        this.changeAmt = changeAmt;
+        this.taxRate = taxRate;
+        
     }
     
     public int getOrderID(){
@@ -98,12 +104,12 @@ class Order{
         OrderID = id;
     }
     
-    public LocalDateTime getTime(){
-        return Time;
+    public LocalDateTime getOrderDate(){
+        return OrderDate;
     }
     
-    public void setLocalDateTime(LocalDateTime time){
-        Time = time;
+    public void setOrderDate(LocalDateTime time){
+        OrderDate = time;
     }
     
     public double getSubTotal(){
@@ -112,6 +118,30 @@ class Order{
     
     public void setSubTotal(double subTot){
         SubTotal = subTot;
+    }
+    
+    public double getChangeAmt(){
+        return changeAmt;
+    }
+    
+    public void setChangeAmt(double amt){
+        changeAmt = amt;
+    }
+    
+    public double getTaxRate(){
+        return taxRate;
+    }
+    
+    public void setTaxRate(double rate){
+        taxRate = rate;
+    }
+    
+    public double calculateTotal(){
+        return SubTotal * (taxRate + 1);
+    }
+    
+    public double calculateChange(){
+        return changeAmt - calculateTotal();
     }
 }
 
@@ -175,10 +205,14 @@ class OrderLine{
 class User {
     private int UserID;
     private String Name;
+    private String Email;
+    private String Password;
     
-    public User(int UserID, String Name){
+    public User(int UserID, String Name, String Email, String Password){
         this.UserID = UserID;
         this.Name = Name;
+        this.Email = Email;
+        this.Password = Password;
     }
     
     public int getUserID(){
@@ -195,5 +229,51 @@ class User {
     
     public void setUserName(String name){
         Name = name;
+    }
+    
+    public String getEmail(){
+        return Email;
+    }
+    
+    public void setEmail(String email){   
+        Email = email;
+    }
+    
+    public String getPassword(){
+        return Password;
+    }
+    
+    public void setPassword(String password){
+        Password = password;
+    }
+    
+    // create a product in the database
+    public void createProduct(Product product){
+    
+    }
+    
+    // delete a product from the database
+    public void deleteProduct(Product product){
+    
+    }
+    
+    // edit a product in the database
+    public void editProduct(Product product){
+    
+    }
+    
+    // create an order in the database
+    public void createOrder(Order order){
+    
+    }
+    
+    // delete an order from the database
+    public void deleteOrder(Order order){
+    
+    }
+    
+    // edit an order in the database
+    public void editOrder(Order order){
+    
     }
 }
