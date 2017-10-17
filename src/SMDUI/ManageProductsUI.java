@@ -92,7 +92,7 @@ public class ManageProductsUI extends javax.swing.JFrame {
     // if add new product is clicked
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        new AddNewProduct().setVisible(true);
+        new ProductView().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // if "back" is clicked

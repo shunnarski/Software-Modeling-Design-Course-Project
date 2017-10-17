@@ -14,17 +14,19 @@ public class Product {
      private int ProductID;
     private String Name;
     private double Price;
-    private int Count;
+    private double Count;
     private String Vendor;
     
     // constructor for Product
-    public Product(int ProductID, String Name, double Price, int Count, String Vendor){
+    public Product(int ProductID, String Name, double Price, double Count, String Vendor){
         this.ProductID = ProductID;
         this.Name = Name;
         this.Price = Price;
         this.Count = Count;
         this.Vendor = Vendor;       
     }
+    
+    public Product(){}
     
     public int getProductID(){
         return ProductID;
@@ -50,11 +52,11 @@ public class Product {
         this.Price = price;
     }
     
-    public int getCount(){
+    public double getCount(){
         return Count;
     }
     
-    public void setCount(int count){
+    public void setCount(double count){
         this.Count = count;
     }
     
