@@ -60,14 +60,22 @@ public class ProductController implements ActionListener {
             JOptionPane.showMessageDialog(null, "Invalid product name! Please provide a non-empty product name!");
             return;
         }
+        
+        String vendorName = productView.getTxtVendorName().getText().trim();
+
+        if (vendorName.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Invalid venodr name! Please provide a non-empty vendor name!");
+            return;
+        }
 
         // Done all validations! Make an object for this product!
 
         Product product = new Product();
-        product.setID(productID);
+        product.setProductID(productID);
         product.setName(productName);
         product.setPrice(productPrice);
-        product.setQuantity(productQuantity);
+        product.setCount(productQuantity);
+        product.setVendor(vendorName);
 
         // Store the product to the database
 
@@ -93,7 +101,8 @@ public class ProductController implements ActionListener {
 
         productView.getTxtProductName().setText(product.getName());
         productView.getTxtProductPrice().setText(String.valueOf(product.getPrice()));
-        productView.getTxtProductQuantity().setText(String.valueOf(product.getQuantity()));
+        productView.getTxtProductQuantity().setText(String.valueOf(product.getCount()));
+        productView.getTxtVendorName().setText(String.valueOf(product.getVendor()));
     }
 
 
