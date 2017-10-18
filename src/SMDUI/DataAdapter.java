@@ -22,10 +22,12 @@ public class DataAdapter {
             ResultSet resultSet = statement.executeQuery(query);
             if (resultSet.next()) {
                 Product product = new Product();
-                product.setProductID(resultSet.getInt(1));
-                product.setName(resultSet.getString(2));
-                product.setPrice(resultSet.getDouble(3));
-                product.setCount(resultSet.getDouble(4));
+                product.setProductID(resultSet.getInt("ProductID"));
+                product.setName(resultSet.getString("Name"));
+                product.setPrice(resultSet.getDouble("Price"));
+                product.setCount(resultSet.getDouble("Quantity"));
+                product.setVendor(resultSet.getString("Vendor"));
+                product.setExpirationDate(resultSet.getDate("ExpirationDate"));
                 resultSet.close();
                 statement.close();
 
@@ -39,7 +41,7 @@ public class DataAdapter {
         return null;
     }
 
-    public void saveProduct(Product product) {
+    public boolean saveProduct(Product product) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM Product WHERE ProductID = ?");
             statement.setInt(1, product.getProductID());
@@ -54,20 +56,24 @@ public class DataAdapter {
                 statement.setInt(4, product.getProductID());
             }
             else { // this product does not exist, use insert into
-                statement = connection.prepareStatement("INSERT INTO Product VALUES (?, ?, ?, ?)");
+                statement = connection.prepareStatement("INSERT INTO Product VALUES (?, ?, ?, ?, ?, ?)");
                 statement.setString(2, product.getName());
                 statement.setDouble(3, product.getPrice());
                 statement.setDouble(4, product.getCount());
                 statement.setInt(1, product.getProductID());
+                statement.setString(5, product.getVendor());
+                statement.setDate(6, product.getExpirationDate());
             }
             statement.execute();
 
             resultSet.close();
             statement.close();
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Database access error!");
             e.printStackTrace();
+            return false;
         }
     }
 }

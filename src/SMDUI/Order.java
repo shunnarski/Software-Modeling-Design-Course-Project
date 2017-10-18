@@ -4,22 +4,24 @@
  * and open the template in the editor.
  */
 package SMDUI;
-
+import java.util.*;
 
 /**
  *
  * @author alecshunnarah
  */
 public class Order {
-     private int OrderID;
-    private String OrderDate;  
+    private int OrderID;
+    private String customerName;
+    private Date OrderDate;  
     private double SubTotal;
     private double changeAmt;
     private double taxRate;
     
     // constructor for order
-    public Order(int OrderID, String Date, double SubTotal, double changeAmt, double taxRate){
+    public Order(int OrderID, String customerName, Date Date, double SubTotal, double changeAmt, double taxRate){
         this.OrderID = OrderID;
+        this.customerName = customerName;
         this.OrderDate = Date;
         this.SubTotal = SubTotal;
         this.changeAmt = changeAmt;
@@ -35,12 +37,20 @@ public class Order {
         OrderID = id;
     }
     
-    public String getOrderDate(){
+    public String getCustomerName() {
+        return customerName;
+    }
+    
+    public void setCustomerName(String name) {
+        this.customerName = name;
+    }
+    
+    public Date getOrderDate(){
         return OrderDate;
     }
     
-    public void setOrderDate(String time){
-        OrderDate = time;
+    public void setOrderDate(Date date){
+        OrderDate = date;
     }
     
     public double getSubTotal(){

@@ -13,23 +13,23 @@ public class ProductController implements ActionListener {
         this.dataAdapter = dataAdapter;
         this.productView = productView;
 
-        productView.getBtnLoad().addActionListener(this);
-        productView.getBtnSave().addActionListener(this);
+//        productView.getBtnLoad().addActionListener(this);
+//        productView.getBtnSave().addActionListener(this);
     }
 
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == productView.getBtnLoad())
-            loadProduct();
-        else
-        if (e.getSource() == productView.getBtnSave())
-            saveProduct();
+//        if (e.getSource() == productView.getBtnLoad())
+//            loadProduct();
+//        else
+//        if (e.getSource() == productView.getBtnSave())
+//            saveProduct();
     }
 
     private void saveProduct() {
         int productID;
         try {
-            productID = Integer.parseInt(productView.getTxtProductID().getText());
+            //productID = Integer.parseInt(productView.getTxtProductID().getText());
         }
         catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid product ID! Please provide a valid product ID!");
@@ -38,7 +38,7 @@ public class ProductController implements ActionListener {
 
         double productPrice;
         try {
-            productPrice = Double.parseDouble(productView.getTxtProductPrice().getText());
+            //productPrice = Double.parseDouble(productView.getTxtProductPrice().getText());
         }
         catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid product price! Please provide a valid product price!");
@@ -47,27 +47,27 @@ public class ProductController implements ActionListener {
 
         double productQuantity;
         try {
-            productQuantity = Double.parseDouble(productView.getTxtProductQuantity().getText());
+            //productQuantity = Double.parseDouble(productView.getTxtProductQuantity().getText());
         }
         catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid product quantity! Please provide a valid product quantity!");
             return;
         }
 
-        String productName = productView.getTxtProductName().getText().trim();
+        //String productName = productView.getTxtProductName().getText().trim();
 
-        if (productName.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Invalid product name! Please provide a non-empty product name!");
-            return;
-        }
+        //if (productName.length() == 0) {
+        //    JOptionPane.showMessageDialog(null, "Invalid product name! Please provide a non-empty product name!");
+        //    return;
+        //}
 
         // Done all validations! Make an object for this product!
 
         Product product = new Product();
-        product.setID(productID);
-        product.setName(productName);
-        product.setPrice(productPrice);
-        product.setQuantity(productQuantity);
+        //product.setID(productID);
+        //product.setName(productName);
+        //product.setPrice(productPrice);
+        //product.setQuantity(productQuantity);
 
         // Store the product to the database
 
@@ -77,7 +77,7 @@ public class ProductController implements ActionListener {
     private void loadProduct() {
         int productID = 0;
         try {
-            productID = Integer.parseInt(productView.getTxtProductID().getText());
+            //productID = Integer.parseInt(productView.getTxtProductID().getText());
         }
         catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid product ID! Please provide a valid product ID!");
@@ -91,9 +91,9 @@ public class ProductController implements ActionListener {
             return;
         }
 
-        productView.getTxtProductName().setText(product.getName());
-        productView.getTxtProductPrice().setText(String.valueOf(product.getPrice()));
-        productView.getTxtProductQuantity().setText(String.valueOf(product.getQuantity()));
+        //productView.getTxtProductName().setText(product.getName());
+        //productView.getTxtProductPrice().setText(String.valueOf(product.getPrice()));
+        //productView.getTxtProductQuantity().setText(String.valueOf(product.getQuantity()));
     }
 
 

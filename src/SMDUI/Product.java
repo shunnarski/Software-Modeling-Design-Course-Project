@@ -5,6 +5,7 @@
  */
 package SMDUI;
 
+import java.sql.*;
 
 /**
  *
@@ -12,18 +13,19 @@ package SMDUI;
  */
 public class Product {
      private int ProductID;
-    private String Name;
+    private String name;
     private double Price;
     private double Count;
-    private String Vendor;
+    private String vendor;
+    private Date expire;
     
     // constructor for Product
     public Product(int ProductID, String Name, double Price, double Count, String Vendor){
         this.ProductID = ProductID;
-        this.Name = Name;
+        this.name = Name;
         this.Price = Price;
         this.Count = Count;
-        this.Vendor = Vendor;       
+        this.vendor = Vendor;       
     }
     
     public Product(){}
@@ -37,11 +39,11 @@ public class Product {
     }
     
     public String getName(){
-        return Name;
+        return name;
     }
     
     public void setName(String name){
-        this.Name = name;
+        this.name = name;
     }
     
     public double getPrice(){
@@ -61,10 +63,18 @@ public class Product {
     }
     
     public String getVendor(){
-        return Vendor;
+        return vendor;
     }
     
     public void setVendor(String vendor){
-        this.Vendor = vendor;
+        this.vendor = vendor;
+    }
+    
+    public void setExpirationDate(Date date) {
+        expire = date;
+    }
+    
+    public Date getExpirationDate() {
+        return expire;
     }
 }
