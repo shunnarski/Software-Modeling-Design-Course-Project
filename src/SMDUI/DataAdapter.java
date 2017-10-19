@@ -76,4 +76,42 @@ public class DataAdapter {
             return false;
         }
     }
+    
+    public Order loadOrder(int id) {
+       try {
+            String query = "SELECT * FROM Order WHERE OrderID = " + id;
+            
+            Order order = null;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                order = new Order();
+                order.setNumber(resultSet.getInt(1));
+                order.setCustomerName(resultSet.getString(2));
+                order.setTotalCost(resultSet.getDouble(3));
+                order.setDate(resultSet.getDate(4));
+                resultSet.close();
+                statement.close();
+                
+                
+            }
+            // Loading the order lines for this order
+            query = "SELECT * FROM OrderLine WHERE OrderID = " + id;  
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                OrderLine line = new OrderLine();
+                line.setOrderNumber(resultSet.getInt(1));
+                line.setProductID(resultSet.getInt(2));
+//                line.setCost(resultSet.getDouble(3));
+//                order.addLine(line);
+            }
+            
+            return order;
+        
+        } catch (SQLException e) {
+            System.out.println("Database access error!");
+            e.printStackTrace();
+        }
+        return null; 
+    }
 }

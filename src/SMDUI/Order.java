@@ -10,31 +10,115 @@ import java.util.*;
  *
  * @author alecshunnarah
  */
+
+//public class Order {
+//    private int OrderID;
+//    private String customerName;
+//    private Date OrderDate;  
+//    private double SubTotal;
+//    private double changeAmt;
+//    private static final double taxRate = 0.09;
+//    
+//    // constructor for order
+////    public Order(int OrderID, String customerName, Date Date, double SubTotal, double changeAmt){
+////        this.OrderID = OrderID;
+////        this.customerName = customerName;
+////        this.OrderDate = Date;
+////        this.SubTotal = SubTotal;
+////        this.changeAmt = changeAmt;
+////        //this.taxRate = taxRate;
+////        
+////    }
+//    
+//    public int getOrderID(){
+//        return OrderID;
+//    }
+//    
+//    public void setOrderID(int id){
+//        OrderID = id;
+//    }
+//    
+//    public String getCustomerName() {
+//        return customerName;
+//    }
+//    
+//    public void setCustomerName(String name) {
+//        this.customerName = name;
+//    }
+//    
+//    public Date getOrderDate(){
+//        return OrderDate;
+//    }
+//    
+//    public void setOrderDate(Date date){
+//        OrderDate = date;
+//    }
+//    
+//    public double getSubTotal(){
+//        return SubTotal;
+//    }
+//    
+//    public void setSubTotal(double subTot){
+//        SubTotal = subTot;
+//    }
+//    
+//    public double getChangeAmt(){
+//        return changeAmt;
+//    }
+//    
+//    public void setChangeAmt(double amt){
+//        changeAmt = amt;
+//    }
+//    
+//    public double getTaxRate(){
+//        return taxRate;
+//    }
+//    
+//    
+//    public double calculateTotal(){
+//        return SubTotal * (taxRate + 1);
+//    }
+//    
+//    public double calculateChange(){
+//        return changeAmt - calculateTotal();
+//    }
+//}
+
+
 public class Order {
-    private int OrderID;
+    private int orderID;
     private String customerName;
-    private Date OrderDate;  
-    private double SubTotal;
-    private double changeAmt;
-    private double taxRate;
+    private double totalCost;
+    private Date date;
     
-    // constructor for order
-    public Order(int OrderID, String customerName, Date Date, double SubTotal, double changeAmt, double taxRate){
-        this.OrderID = OrderID;
-        this.customerName = customerName;
-        this.OrderDate = Date;
-        this.SubTotal = SubTotal;
-        this.changeAmt = changeAmt;
-        this.taxRate = taxRate;
-        
+    private List<OrderLine> lines;
+    
+    public Order () {
+        lines = new ArrayList<>();
     }
     
-    public int getOrderID(){
-        return OrderID;
+    public Date getDate() {
+        return date;
     }
     
-    public void setOrderID(int id){
-        OrderID = id;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
+    public double getTotalCost() {
+        return totalCost;
+    }
+    
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
+    }
+    
+    public int getOrderID() {
+        return orderID;
+    }
+    
+    public void setNumber(int id) {
+        this.orderID = id;
     }
     
     public String getCustomerName() {
@@ -43,45 +127,5 @@ public class Order {
     
     public void setCustomerName(String name) {
         this.customerName = name;
-    }
-    
-    public Date getOrderDate(){
-        return OrderDate;
-    }
-    
-    public void setOrderDate(Date date){
-        OrderDate = date;
-    }
-    
-    public double getSubTotal(){
-        return SubTotal;
-    }
-    
-    public void setSubTotal(double subTot){
-        SubTotal = subTot;
-    }
-    
-    public double getChangeAmt(){
-        return changeAmt;
-    }
-    
-    public void setChangeAmt(double amt){
-        changeAmt = amt;
-    }
-    
-    public double getTaxRate(){
-        return taxRate;
-    }
-    
-    public void setTaxRate(double rate){
-        taxRate = rate;
-    }
-    
-    public double calculateTotal(){
-        return SubTotal * (taxRate + 1);
-    }
-    
-    public double calculateChange(){
-        return changeAmt - calculateTotal();
     }
 }

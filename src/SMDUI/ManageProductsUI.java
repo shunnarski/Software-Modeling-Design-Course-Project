@@ -17,34 +17,34 @@ public class ManageProductsUI extends javax.swing.JFrame {
     /**
      * Creates new form ManageProdcutsUI
      */
-//    JButton btnView = new JButton("View Product");
-//    JButton btnAdd  = new JButton("Add Product");
+    JButton btnView = new JButton("View Product");
+    JButton btnAdd  = new JButton("Add Product");
     
     
     
     public ManageProductsUI() {
-        initComponents();
+        //initComponents();
         
         
-//        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-//        JPanel panelButton = new JPanel();
-//        panelButton.add(btnView);
-//        panelButton.add(btnAdd);
-//        getContentPane().add(panelButton);
-//        
-//        btnAdd.addActionListener(new ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//            //    this.setVisible(false);
-//                new ProductView().setVisible(true);
-//            }
-//        });
-//        
-//        btnView.addActionListener(new ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//            //    this.setVisible(false);
-//                new ProductView().setVisible(true);
-//            }
-//        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JPanel panelButton = new JPanel();
+        panelButton.add(btnView);
+        panelButton.add(btnAdd);
+        getContentPane().add(panelButton);
+        
+        btnAdd.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            //    this.setVisible(false);
+                new ProductView().setVisible(true);
+            }
+        });
+        
+        btnView.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            //    this.setVisible(false);
+                new ProductView().setVisible(true);
+            }
+        });
     }
 
     /**
