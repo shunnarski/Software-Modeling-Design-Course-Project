@@ -76,7 +76,7 @@ public class ProductView extends javax.swing.JFrame {
 
         jLabel6.setText("Vendor");
 
-        btnCreate.setText("Create Product");
+        btnCreate.setText("Save Product");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateActionPerformed(evt);
@@ -100,7 +100,9 @@ public class ProductView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCancel)
                         .addGap(35, 35, 35)
-                        .addComponent(btnView))
+                        .addComponent(btnView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCreate))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
@@ -118,11 +120,6 @@ public class ProductView extends javax.swing.JFrame {
                             .addComponent(txtVendor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))))
                 .addContainerGap(47, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(276, Short.MAX_VALUE)
-                    .addComponent(btnCreate)
-                    .addGap(37, 37, 37)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,13 +151,9 @@ public class ProductView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
-                    .addComponent(btnView))
+                    .addComponent(btnView)
+                    .addComponent(btnCreate))
                 .addGap(20, 20, 20))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(278, Short.MAX_VALUE)
-                    .addComponent(btnCreate)
-                    .addGap(18, 18, 18)))
         );
 
         pack();
@@ -169,7 +162,7 @@ public class ProductView extends javax.swing.JFrame {
     // "Cancel" button navigates back to ManageProducts page
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.setVisible(false);
-        new ManageProductsUI().setVisible(true);
+        new HomeUI().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
 
@@ -195,7 +188,7 @@ public class ProductView extends javax.swing.JFrame {
         product.setExpirationDate(Date.valueOf(txtExpirationDate.getText()));
 
         if (SoftwareModelingDesignCourseProject.getInstance().getDataAdapter().saveProduct(product)) {
-            JOptionPane.showMessageDialog(null, "Product added to Database!");
+            JOptionPane.showMessageDialog(null, "Product saved to Database!");
         } else {
             JOptionPane.showMessageDialog(null, "Error! Product was not added!");
         }
