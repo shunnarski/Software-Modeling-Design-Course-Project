@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package SMDUI;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
@@ -18,6 +20,8 @@ public class Order {
     private double changeAmt;
     private double taxRate;
     
+    private List<OrderLine> lines;
+    
     // constructor for order
     public Order(int OrderID, String customerName, Date Date, double SubTotal, double changeAmt, double taxRate){
         this.OrderID = OrderID;
@@ -28,6 +32,11 @@ public class Order {
         this.taxRate = taxRate;
         
     }
+    
+    public Order() {
+        lines = new ArrayList<OrderLine>();
+    }
+    
     
     public int getOrderID(){
         return OrderID;
@@ -83,5 +92,17 @@ public class Order {
     
     public double calculateChange(){
         return changeAmt - calculateTotal();
+    }
+    
+    public void addLine(OrderLine line){
+        lines.add(line);
+    }
+    
+    public void removeLine(OrderLine line){
+        lines.remove(line);
+    }
+    
+    public List<OrderLine> getLines(){
+        return lines;
     }
 }

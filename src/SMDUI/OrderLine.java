@@ -10,50 +10,33 @@ package SMDUI;
  * @author alecshunnarah
  */
 public class OrderLine {
-    private int OrderLineID;
-    private Order Order;
-    private Product Product;
-    private int OrderLineCount;
+    private int OrderID;
+    private int ProductID;
+    private double OrderLineCount;
     private double OrderLineTotal;
     
-    // constructor for OrderLine
-    public OrderLine(int OrderLineID, Order Order, Product Product, int OrderLineCount, double OrderLineTotal){
-        this.OrderLineID = OrderLineID;
-        this.Order = Order;
-        this.Product = Product;
-        this.OrderLineCount = OrderLineCount;
-        this.OrderLineTotal = OrderLineTotal;
+    
+    public int getOrderID(){
+        return OrderID;
     }
     
-    public int getOrderLineID(){
-        return OrderLineID;
+    public void setOrderID(int order){
+        OrderID = order;
     }
     
-    public void setOrderLineID(int id){
-        OrderLineID = id;
+    public int getProductID(){
+        return ProductID;
     }
     
-    public Order getOrder(){
-        return Order;
+    public void setProductID(int product){
+        ProductID = product;
     }
     
-    public void setOrder(Order order){
-        Order = order;
-    }
-    
-    public Product getProduct(){
-        return Product;
-    }
-    
-    public void setProduct(Product product){
-        Product = product;
-    }
-    
-    public int getCount(){
+    public double getCount(){
         return OrderLineCount;
     }
     
-    public void setCount(int count){
+    public void setCount(double count){
         OrderLineCount = count;
     }
     
@@ -61,7 +44,9 @@ public class OrderLine {
         return OrderLineTotal;
     }
     
-    public void setPrice(int total){
+    public void setPrice(double total){
         OrderLineTotal = total;
     }
+    
+    
 }

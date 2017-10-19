@@ -173,16 +173,18 @@ public class ProductView extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         String name, vendor, expDate;
-        double price, count;
+        double price, count, quantity;
         int id = Integer.parseInt(txtProductID.getText());
         price = Double.parseDouble(txtPrice.getText());
         count = Double.parseDouble(txtQuantity.getText());
+        quantity = Double.parseDouble(txtQuantity.getText());
         name = txtProductName.getText();
         expDate = txtExpirationDate.getText();
 
         Product product = new Product();
         product.setProductID(id);
         product.setPrice(price);
+        product.setCount(quantity);
         product.setName(txtProductName.getText());
         product.setVendor(txtVendor.getText());
         product.setExpirationDate(Date.valueOf(txtExpirationDate.getText()));
