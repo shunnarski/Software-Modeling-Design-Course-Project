@@ -1,80 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package SMDUI;
-
-import java.sql.*;
-
-/**
- *
- * @author alecshunnarah
- */
 public class Product {
-     private int ProductID;
+    private int productID;
     private String name;
-    private double Price;
-    private double Count;
-    private String vendor;
-    private Date expire;
-    
-    // constructor for Product
-    public Product(int ProductID, String Name, double Price, double Count, String Vendor){
-        this.ProductID = ProductID;
-        this.name = Name;
-        this.Price = Price;
-        this.Count = Count;
-        this.vendor = Vendor;       
+    private double price;
+    private double quantity;
+
+    public double getPrice() {
+        return price;
     }
-    
-    public Product(){}
-    
-    public int getProductID(){
-        return ProductID;
+
+    public void setPrice(double price) {
+        this.price = price;
     }
-    
-    public void setProductID(int id){
-        ProductID = id;
+
+    public int getProductID() {
+        return productID;
     }
-    
-    public String getName(){
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public String getName() {
         return name;
     }
-    
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    
-    public double getPrice(){
-        return Price;
+
+    public double getQuantity() {
+        return quantity;
     }
-    
-    public void setPrice(double price){
-        this.Price = price;
-    }
-    
-    public double getCount(){
-        return Count;
-    }
-    
-    public void setCount(double count){
-        this.Count = count;
-    }
-    
-    public String getVendor(){
-        return vendor;
-    }
-    
-    public void setVendor(String vendor){
-        this.vendor = vendor;
-    }
-    
-    public void setExpirationDate(Date date) {
-        expire = date;
-    }
-    
-    public Date getExpirationDate() {
-        return expire;
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 }
