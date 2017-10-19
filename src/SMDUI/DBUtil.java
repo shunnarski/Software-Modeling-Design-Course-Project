@@ -24,16 +24,14 @@ public class DBUtil {
                     + "OrderID int not null primary key, "
                     + "CustomerName char(100) not null, "
                     + "OrderDate DateTime not null, "
-                    + "SubTotal double not null, "
-                    + "ChangeAmt double not null, "
-                    + "taxRate double not null); "
+                    + "TotalCost double not null); "
             );
             
             query.concat("CREATE TABLE if not exists OrderLine ("
                     + "OrderID int not null, "
                     + "ProductID int not null, "
-                    + "OrderLineCount int not null, "
-                    + "OrderLineTotal double not null, "
+                    + "Quantity int not null, "
+                    + "Cost double not null, "
                     + "FOREIGN KEY (OrderID) REFERENCES Order(OrderID), "
                     + "FOREIGN KEY (ProductID) REFERENCES Product(ProductID)); "
             );

@@ -68,8 +68,9 @@ package SMDUI;
 
 public class OrderLine {
     private int productID;
-    private int orderNumber;
+    private int orderID;
     private double quantity;
+    private double cost;
     
     public int getProductID() {
         return productID;
@@ -79,12 +80,12 @@ public class OrderLine {
         this.productID = id;
     }
     
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getOrderID() {
+        return orderID;
     }
     
-    public void setOrderNumber(int num) {
-        this.orderNumber = num;
+    public void setOrderID(int id) {
+        this.orderID = id;
     }
     
     public double getQuantity() {
@@ -93,5 +94,13 @@ public class OrderLine {
     
     public void setQuantity(double quantity) {
         this.quantity = quantity;
+    }
+    
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+    
+    public double getCost() {
+        return cost;
     }
 }

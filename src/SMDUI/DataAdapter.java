@@ -86,25 +86,26 @@ public class DataAdapter {
             ResultSet resultSet = statement.executeQuery(query);
             if (resultSet.next()) {
                 order = new Order();
-                order.setNumber(resultSet.getInt(1));
+                order.setOrderID(resultSet.getInt(1));
                 order.setCustomerName(resultSet.getString(2));
                 order.setTotalCost(resultSet.getDouble(3));
                 order.setDate(resultSet.getDate(4));
                 resultSet.close();
                 statement.close();
-                
-                
+  
             }
             // Loading the order lines for this order
             query = "SELECT * FROM OrderLine WHERE OrderID = " + id;  
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 OrderLine line = new OrderLine();
-                line.setOrderNumber(resultSet.getInt(1));
+                line.setOrderID(resultSet.getInt(1));
                 line.setProductID(resultSet.getInt(2));
-//                line.setCost(resultSet.getDouble(3));
-//                order.addLine(line);
+                line.setQuantity(resultSet.getDouble(3));
+                line.setCost(resultSet.getDouble(4));
+                order.addLine(line); // Dereferencing possible null pointer
             }
+            
             
             return order;
         
@@ -113,5 +114,47 @@ public class DataAdapter {
             e.printStackTrace();
         }
         return null; 
+    }
+    
+    public boolean saveOrder(Order order) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Order WHERE OrderID = ?");
+            
+            statement.setInt(1, order.getOrderID());
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) { // this order exists, update its fields
+                statement = connection.prepareStatement("UPDATE Order SET CustomerName = ?, OrderDate = ?, TotalCost = ? WHERE OrderID = ?");
+                statement.setString(1, order.getCustomerName());
+                statement.setDate(2, order.getDate());
+                statement.setDouble(3, order.getTotalCost());
+                statement.setInt(4, order.getOrderID());
+                
+                
+            }
+            
+            /**
+             * HOW DO WE SET ORDERLINES OR >> Create OrderLines ?? ///////////////////////////
+             */
+            
+            else { // this product does not exist, use insert into
+                statement = connection.prepareStatement("INSERT INTO Order VALUES (?, ?, ?, ?)");
+                statement.setInt(1, order.getOrderID());
+                statement.setString(2, order.getCustomerName());
+                statement.setDate(3, order.getDate());
+                statement.setDouble(4, order.getTotalCost());
+            }
+            statement.execute();
+
+            resultSet.close();
+            statement.close();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Database access error!");
+            e.printStackTrace();
+            return false;
+        }
     }
 }

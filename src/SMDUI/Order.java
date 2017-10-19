@@ -89,7 +89,7 @@ public class Order {
     private int orderID;
     private String customerName;
     private double totalCost;
-    private Date date;
+    private java.sql.Date date;
     
     private List<OrderLine> lines;
     
@@ -97,11 +97,11 @@ public class Order {
         lines = new ArrayList<>();
     }
     
-    public Date getDate() {
+    public java.sql.Date getDate() {
         return date;
     }
     
-    public void setDate(Date date) {
+    public void setDate(java.sql.Date date) {
         this.date = date;
     }
     
@@ -117,7 +117,7 @@ public class Order {
         return orderID;
     }
     
-    public void setNumber(int id) {
+    public void setOrderID(int id) {
         this.orderID = id;
     }
     
@@ -127,5 +127,9 @@ public class Order {
     
     public void setCustomerName(String name) {
         this.customerName = name;
+    }
+    
+    public void addLine(OrderLine line) {
+        lines.add(line);
     }
 }
