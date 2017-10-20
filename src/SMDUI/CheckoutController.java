@@ -33,6 +33,7 @@ public class CheckoutController implements ActionListener {
     }
 
     private void saveOrder() {
+        
         JOptionPane.showMessageDialog(null, "This function is being implemented!");
     }
 
@@ -80,6 +81,13 @@ public class CheckoutController implements ActionListener {
         DefaultTableModel rows = this.view.getRows();
         int numRows = rows.getRowCount();
         for(int i = 0; i < numRows; i++){
+            Object prodID = rows.getValueAt(0, 0);
+            int id = Integer.parseInt(prodID.toString());
+            Product product = dataAdapter.loadProduct(id);
+            Object quantity = rows.getValueAt(0, 3);
+            double quant = Double.parseDouble(quantity.toString());
+            product.setCount(product.getCount() + quant);
+            dataAdapter.saveProduct(product);
             rows.removeRow(0);
         }
         order = new Order();
