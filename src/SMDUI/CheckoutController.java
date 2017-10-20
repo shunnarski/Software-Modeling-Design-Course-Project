@@ -33,8 +33,25 @@ public class CheckoutController implements ActionListener {
     }
 
     private void saveOrder() {
-        
-        JOptionPane.showMessageDialog(null, "This function is being implemented!");
+        if(this.view.getTableSize() == 0){
+                JOptionPane.showMessageDialog(null, "No items have been added!");
+        }
+        else{
+            String payment = JOptionPane.showInputDialog("Enter Customer Payment: ");
+            double pay = Double.parseDouble(payment);
+            if(pay < order.getSubTotal()){
+                JOptionPane.showMessageDialog(null, "Please enter the Subtotal amount or more.");               
+            }
+            else {
+                order.setChangeAmt(pay);
+                dataAdapter.saveOrder(order);
+                this.view.setVisible(false);
+                new FinalizeOrderUI(order).setVisible(true);
+                clearCheckout(true);
+
+            }
+            
+        }
     }
 
     private void addProduct() {
@@ -52,6 +69,7 @@ public class CheckoutController implements ActionListener {
             return;
         }
 
+        // we need to actually save the orders in the database..
         OrderLine line = new OrderLine();
         line.setOrderID(this.order.getOrderID());
         line.setProductID(product.getProductID());
@@ -78,21 +96,28 @@ public class CheckoutController implements ActionListener {
 
     private void cancelOrder(){
         this.view.setVisible(false);
+        clearCheckout(false);
+        new HomeUI().setVisible(true);
+        
+    }
+    
+    private void clearCheckout(boolean orderComplete){
         DefaultTableModel rows = this.view.getRows();
         int numRows = rows.getRowCount();
         for(int i = 0; i < numRows; i++){
-            Object prodID = rows.getValueAt(0, 0);
-            int id = Integer.parseInt(prodID.toString());
-            Product product = dataAdapter.loadProduct(id);
-            Object quantity = rows.getValueAt(0, 3);
-            double quant = Double.parseDouble(quantity.toString());
-            product.setCount(product.getCount() + quant);
-            dataAdapter.saveProduct(product);
+            if(!orderComplete){
+                Object prodID = rows.getValueAt(0, 0);
+                int id = Integer.parseInt(prodID.toString());
+                Product product = dataAdapter.loadProduct(id);
+                Object quantity = rows.getValueAt(0, 3);
+                double quant = Double.parseDouble(quantity.toString());
+                product.setCount(product.getCount() + quant);
+                dataAdapter.saveProduct(product);
+            }
             rows.removeRow(0);
         }
         order = new Order();
         this.view.getLabTotal().setText("Total: ");
-        new HomeUI().setVisible(true);
-        
     }
+    
 }
