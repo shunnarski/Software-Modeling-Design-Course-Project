@@ -72,4 +72,8 @@ public class CheckoutScreen extends JFrame {
     public DefaultTableModel getRows(){
         return items;
     }
+    
+    public int getTableSize(){
+        return items.getRowCount();
+    }
 }

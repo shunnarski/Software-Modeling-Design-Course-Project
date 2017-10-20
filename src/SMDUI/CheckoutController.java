@@ -71,15 +71,16 @@ public class CheckoutController implements ActionListener {
         row[4] = line.getPrice();
 
         this.view.addRow(row);
-        this.view.getLabTotal().setText("Total: " + (order.getSubTotal() * quantity));
+        this.view.getLabTotal().setText("Total: $" + (order.getSubTotal()));
         this.view.invalidate();
     }
 
     private void cancelOrder(){
         this.view.setVisible(false);
         DefaultTableModel rows = this.view.getRows();
-        for(int i = 0; i < rows.getRowCount() + 1; i++){
-            rows.removeRow(i);
+        int numRows = rows.getRowCount();
+        for(int i = 0; i < numRows; i++){
+            rows.removeRow(0);
         }
         order = new Order();
         this.view.getLabTotal().setText("Total: ");
