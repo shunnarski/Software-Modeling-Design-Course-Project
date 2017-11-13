@@ -47,7 +47,8 @@ public class SoftwareModelingDesignCourseProject {
         return productView;
     }
     
-     public CheckoutScreen getCheckoutScreen() {
+     public CheckoutScreen getCheckoutScreen(User user) {
+        checkoutController.setUser(user);
         return checkoutScreen;
     }
 
@@ -90,13 +91,13 @@ public class SoftwareModelingDesignCourseProject {
 
         // Create the Product View and Controller here!
 
-        productView = new ProductView();
+        productView = new ProductView(null);
 
         productController = new ProductController(productView, dataAdapter);
 
         mainScreen = new UserLoginView();
         
-        checkoutController = new CheckoutController(checkoutScreen, dataAdapter);
+        checkoutController = new CheckoutController(checkoutScreen, dataAdapter, null);
         
         loginController = new UserLoginController(mainScreen, dataAdapter);
 

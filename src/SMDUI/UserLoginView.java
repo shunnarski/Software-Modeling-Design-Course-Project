@@ -128,22 +128,7 @@ public class UserLoginView extends javax.swing.JFrame {
     // LOGIN button
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // check to see if SQL server contains the entered username and password. 
-        // if so, navigate to the home ui page.
-        String username, password;
-        username = jTextField1.getText();
-        password = jTextField2.getText();
-        
-        //enter sql code in here later..
-        
-        //log user in
-        if(username.equals("root") && password.equals("asdf")) {
-            this.setVisible(false);
-            new HomeUI().setVisible(true);
-        }
-        // output a error message
-        else{
-            
-        }
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

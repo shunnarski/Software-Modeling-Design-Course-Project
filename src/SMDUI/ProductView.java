@@ -13,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author Alec Shunnarah
  */
 public class ProductView extends javax.swing.JFrame {
-
+    private static User user;
     /**
      * Creates new form AddNewProduct
      */
-    public ProductView() {
+    public ProductView(User user) {
+        this.user = user;
         initComponents();
     }
 
@@ -162,7 +163,7 @@ public class ProductView extends javax.swing.JFrame {
     // "Cancel" button navigates back to ManageProducts page
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.setVisible(false);
-        new HomeUI().setVisible(true);
+        new HomeUI(user).setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
 

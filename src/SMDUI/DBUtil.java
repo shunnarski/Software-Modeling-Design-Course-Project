@@ -20,9 +20,8 @@ public class DBUtil {
                     + "Vendor char(30) not null, "
                     + "ExpirationDate DateTime); ";
             
-            query.concat("CREATE TABLE if not exists Order ("
+            query.concat("CREATE TABLE if not exists tblOrder ("
                     + "OrderID int not null primary key, "
-                    + "CustomerName char(100) not null, "
                     + "OrderDate DateTime not null, "
                     + "SubTotal double not null, "
                     + "ChangeAmt double not null, "
@@ -45,7 +44,8 @@ public class DBUtil {
                     + "isManager bit not null, "
             );
             
-            // create a root user/manager
+            query.concat("INSERT INTO if not exists User (UnitID, Name, Password, isManager)"
+                    + "VALUES (1, 'root', 'asdf', true)");
 
          
             stmt.execute(query);

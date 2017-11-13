@@ -11,11 +11,12 @@ import java.text.DecimalFormat;
  * @author alecshunnarah
  */
 public class FinalizeOrderUI extends javax.swing.JFrame {
-
+    private static User user;
     /**
      * Creates new form FinalizeOrderUI
      */
-    public FinalizeOrderUI(Order order) {
+    public FinalizeOrderUI(Order order, User user) {
+        this.user = user;
         initComponents();
         DecimalFormat df = new DecimalFormat("###.##");
         amtPaidLabel.setText("$" + order.getChangeAmt());
@@ -119,7 +120,7 @@ public class FinalizeOrderUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.setVisible(false);
-       new HomeUI().setVisible(true);
+       new HomeUI(user).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

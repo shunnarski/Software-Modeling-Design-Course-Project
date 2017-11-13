@@ -9,8 +9,9 @@ public class CheckoutController implements ActionListener {
     private CheckoutScreen view;
     private DataAdapter dataAdapter; // to save and load product
     private Order order = null;
-
-    public CheckoutController(CheckoutScreen view, DataAdapter dataAdapter) {
+    private User user;
+    public CheckoutController(CheckoutScreen view, DataAdapter dataAdapter, User user) {
+        this.user = user;
         this.dataAdapter = dataAdapter;
         this.view = view;
 
@@ -46,7 +47,7 @@ public class CheckoutController implements ActionListener {
                 order.setChangeAmt(pay);
                 dataAdapter.saveOrder(order);
                 this.view.setVisible(false);
-                new FinalizeOrderUI(order).setVisible(true);
+                new FinalizeOrderUI(order, user).setVisible(true);
                 clearCheckout(true);
 
             }
@@ -97,7 +98,7 @@ public class CheckoutController implements ActionListener {
     private void cancelOrder(){
         this.view.setVisible(false);
         clearCheckout(false);
-        new HomeUI().setVisible(true);
+        new HomeUI(user).setVisible(true);
         
     }
     
@@ -118,6 +119,10 @@ public class CheckoutController implements ActionListener {
         }
         order = new Order();
         this.view.getLabTotal().setText("Total: ");
+    }
+    
+    public void setUser(User user){
+        this.user = user;
     }
     
 }

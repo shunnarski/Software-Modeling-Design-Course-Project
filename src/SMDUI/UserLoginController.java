@@ -24,11 +24,6 @@ public class UserLoginController implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-//        if (e.getSource() == productView.getBtnLoad())
-//            loadProduct();
-//        else
-//        if (e.getSource() == productView.getBtnSave())
-//            saveProduct();
           if(e.getSource() == userLoginView.getLoginBtn()){
               UserLogin();
           }
@@ -38,11 +33,10 @@ public class UserLoginController implements ActionListener {
         user = dataAdapter.loadUser(userLoginView.getNameField(), userLoginView.getPasswordField());
         if(user == null){
             JOptionPane.showMessageDialog(null, "This user does not exist in the database!");
-            return;
         }
         else{
             userLoginView.setVisible(false);
-            new HomeUI().setVisible(true);
+            new HomeUI(user).setVisible(true);
         }
     }
 }

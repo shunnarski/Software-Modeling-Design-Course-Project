@@ -13,7 +13,7 @@ import javax.swing.*;
  * @author Alec Shunnarah
  */
 public class ManageProductsUI extends javax.swing.JFrame {
-
+    private static User user;
     /**
      * Creates new form ManageProdcutsUI
      */
@@ -22,7 +22,8 @@ public class ManageProductsUI extends javax.swing.JFrame {
     
     
     
-    public ManageProductsUI() {
+    public ManageProductsUI(User user) {
+        this.user = user;
         initComponents();
         
         
@@ -116,20 +117,20 @@ public class ManageProductsUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new ProductView().setVisible(true);
+        new ProductView(user).setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // if add new product is clicked
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        new ProductView().setVisible(true);
+        new ProductView(user).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // if "back" is clicked
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.setVisible(false);
-        new HomeUI().setVisible(true);
+        new HomeUI(user).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -163,7 +164,7 @@ public class ManageProductsUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageProductsUI().setVisible(true);
+                new ManageProductsUI(user).setVisible(true);
             }
         });
     }

@@ -152,7 +152,7 @@ public class DataAdapter {
         try{
             User user = null;
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT FROM User WHERE Password = " + password + " AND Name = " +  name);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM User WHERE Password = '" + password + "' AND Name = '" +  name + "'");
             
             if(resultSet.next()){
                 user = new User(resultSet.getInt("UserID"), resultSet.getString("Name"), resultSet.getString("Password"), resultSet.getBoolean("isManager"));
