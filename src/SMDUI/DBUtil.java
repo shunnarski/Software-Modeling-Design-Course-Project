@@ -37,6 +37,15 @@ public class DBUtil {
                     + "FOREIGN KEY (OrderID) REFERENCES Order(OrderID), "
                     + "FOREIGN KEY (ProductID) REFERENCES Product(ProductID)); "
             );
+            
+            query.concat("CREATE TABLE if not exists User ("
+                    + "UserID int not null, "
+                    + "Name String not null, "
+                    + "Password String not null, "
+                    + "isManager bit not null, "
+            );
+            
+            // create a root user/manager
 
          
             stmt.execute(query);

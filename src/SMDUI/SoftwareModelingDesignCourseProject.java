@@ -35,11 +35,11 @@ public class SoftwareModelingDesignCourseProject {
 
     private ProductView productView;
 
-    private UserLogin mainScreen;
+    private UserLoginView mainScreen;
     
         private CheckoutScreen checkoutScreen = new CheckoutScreen();
 
-    public UserLogin getMainScreen() {
+    public UserLoginView getMainScreen() {
         return mainScreen;
     }
 
@@ -58,6 +58,8 @@ public class SoftwareModelingDesignCourseProject {
     }
     
     private CheckoutController checkoutController;
+    
+    private UserLoginController loginController;
 
     public CheckoutController getCheckoutController() {
         return checkoutController;
@@ -92,9 +94,11 @@ public class SoftwareModelingDesignCourseProject {
 
         productController = new ProductController(productView, dataAdapter);
 
-        mainScreen = new UserLogin();
+        mainScreen = new UserLoginView();
         
         checkoutController = new CheckoutController(checkoutScreen, dataAdapter);
+        
+        loginController = new UserLoginController(mainScreen, dataAdapter);
 
     }
 

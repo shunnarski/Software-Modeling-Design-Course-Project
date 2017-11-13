@@ -12,15 +12,17 @@ package SMDUI;
 public class User {
      private int UserID;
     private String Name;
-    private String Email;
     private String Password;
+    private boolean isManager;
     
-    public User(int UserID, String Name, String Email, String Password){
+    public User(int UserID, String Name, String Password, boolean isManager){
         this.UserID = UserID;
         this.Name = Name;
-        this.Email = Email;
         this.Password = Password;
+        this.isManager = isManager;
     }
+    
+    public User() {}
     
     public int getUserID(){
         return UserID;
@@ -38,13 +40,10 @@ public class User {
         Name = name;
     }
     
-    public String getEmail(){
-        return Email;
+    public boolean isManager(){
+        return this.isManager;
     }
-    
-    public void setEmail(String email){   
-        Email = email;
-    }
+       
     
     public String getPassword(){
         return Password;
@@ -54,24 +53,4 @@ public class User {
         Password = password;
     }
     
-    // create a product in the database
-    public void createProduct(Product product){
-    
-    }
-    
-    
-    // edit a product in the database
-    public void editProduct(Product product){
-    
-    }
-    
-    // create an order in the database
-    public void createOrder(Order order){
-    
-    }
-    
-    // edit an order in the database
-    public void editOrder(Order order){
-    
-    }
 }

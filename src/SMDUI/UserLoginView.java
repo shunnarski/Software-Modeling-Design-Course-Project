@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 package SMDUI;
-
+import javax.swing.*;
 /**
  *
  * @author Alec Shunnarah
  */
-public class UserLogin extends javax.swing.JFrame {
+public class UserLoginView extends javax.swing.JFrame {
 
     /**
      * Creates new form UserLogin
      */
-    public UserLogin() {
+    public UserLoginView() {
         initComponents();
     }
 
@@ -38,7 +38,7 @@ public class UserLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Username:");
+        jLabel1.setText("Name:");
 
         jLabel2.setText("Password:");
 
@@ -56,7 +56,7 @@ public class UserLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Username: root");
+        jLabel3.setText("Name: root");
 
         jLabel4.setText("Password: asdf");
 
@@ -82,7 +82,7 @@ public class UserLogin extends javax.swing.JFrame {
                                 .addComponent(jTextField1)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
                         .addComponent(jLabel4)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +115,15 @@ public class UserLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public JButton getLoginBtn(){
+        return jButton1;
+    }   
+    public String getNameField(){
+        return jTextField1.getText();    
+    }
+    public String getPasswordField(){
+        return jTextField2.getText();
+    }
     // hit sql server to check if the entered username and password are contained
     // LOGIN button
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

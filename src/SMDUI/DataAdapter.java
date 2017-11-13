@@ -147,4 +147,26 @@ public class DataAdapter {
             return false;
         }
     }
+    
+    public User loadUser(String name, String password){
+        try{
+            User user = null;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT FROM User WHERE Password = " + password + " AND Name = " +  name);
+            
+            if(resultSet.next()){
+                user = new User(resultSet.getInt("UserID"), resultSet.getString("Name"), resultSet.getString("Password"), resultSet.getBoolean("isManager"));
+                resultSet.close();
+                statement.close();
+            }
+            
+            return user;
+        }
+        
+        catch(SQLException e){
+            System.out.println("Database access error!");
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
