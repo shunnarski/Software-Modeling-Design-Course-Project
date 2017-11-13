@@ -169,4 +169,22 @@ public class DataAdapter {
             return null;
         }
     }
+    
+    public void updateUserPassword(User user, String newPassword){
+        try{
+            PreparedStatement statement = connection.prepareStatement("UPDATE User SET Password = ? WHERE Name = '" + user.getUserName() 
+                    + "' AND Password = '" + user.getPassword() + "'");
+            statement.setString(1, newPassword);
+            user.setPassword(newPassword);
+            
+            statement.execute();
+            statement.close();
+            
+        }   
+        catch(SQLException e){
+            e.printStackTrace();
+            System.out.println("There was an issue updating the database");
+        }
+        
+    }
 }
