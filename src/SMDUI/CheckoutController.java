@@ -91,7 +91,7 @@ public class CheckoutController implements ActionListener {
         row[4] = line.getPrice();
 
         this.view.addRow(row);
-        this.view.getLabTotal().setText("Total: $" + (order.getSubTotal()));
+        this.view.getLabTotal().setText("Total: $" + (order.calculateTotal()));
         this.view.invalidate();
     }
 

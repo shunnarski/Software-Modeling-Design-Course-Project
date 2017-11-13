@@ -6,7 +6,7 @@
 package SMDUI;
 import java.util.List;
 import java.util.ArrayList;
-import java.sql.Date;
+
 
 /**
  *
@@ -14,23 +14,19 @@ import java.sql.Date;
  */
 public class Order {
     private int OrderID;
-    private String customerName;
-    private Date OrderDate;  
     private double SubTotal;
     private double changeAmt;
-    private double taxRate;
+    private final double TAXRATE = 0.09;
+
     
     private List<OrderLine> lines;
     
     // constructor for order
-    public Order(int OrderID, String customerName, Date Date, double SubTotal, double changeAmt, double taxRate){
+    public Order(int OrderID, double SubTotal, double changeAmt){
         this.OrderID = OrderID;
-        this.customerName = customerName;
-        this.OrderDate = Date;
         this.SubTotal = SubTotal;
         this.changeAmt = changeAmt;
-        this.taxRate = taxRate;
-        
+
     }
     
     public Order() {
@@ -44,22 +40,6 @@ public class Order {
     
     public void setOrderID(int id){
         OrderID = id;
-    }
-    
-    public String getCustomerName() {
-        return customerName;
-    }
-    
-    public void setCustomerName(String name) {
-        this.customerName = name;
-    }
-    
-    public Date getOrderDate(){
-        return OrderDate;
-    }
-    
-    public void setOrderDate(Date date){
-        OrderDate = date;
     }
     
     public double getSubTotal(){
@@ -79,15 +59,11 @@ public class Order {
     }
     
     public double getTaxRate(){
-        return taxRate;
+        return TAXRATE;
     }
-    
-    public void setTaxRate(double rate){
-        taxRate = rate;
-    }
-    
+
     public double calculateTotal(){
-        return SubTotal * (taxRate + 1);
+        return SubTotal * (TAXRATE + 1);
     }
     
     public double calculateChange(){

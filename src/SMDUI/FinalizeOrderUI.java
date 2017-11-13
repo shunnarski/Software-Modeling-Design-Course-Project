@@ -20,8 +20,8 @@ public class FinalizeOrderUI extends javax.swing.JFrame {
         initComponents();
         DecimalFormat df = new DecimalFormat("###.##");
         amtPaidLabel.setText("$" + order.getChangeAmt());
-        totalLabel.setText("$" + order.getSubTotal());
-        changeLabel.setText("$" + df.format((order.getChangeAmt() - order.getSubTotal())));        
+        totalLabel.setText("$" + order.calculateTotal());
+        changeLabel.setText("$" + df.format((order.getChangeAmt() - order.calculateTotal())));        
     }
 
     /**

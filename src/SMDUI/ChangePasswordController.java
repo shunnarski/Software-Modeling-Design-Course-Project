@@ -40,7 +40,7 @@ public class ChangePasswordController implements ActionListener {
     
     public void updatePassword(String old, String newPassword){
         if(!old.equals(user.getPassword())){
-            JOptionPane.showMessageDialog(null, "This is not this user's current password.");
+            JOptionPane.showMessageDialog(null, "This is not " + user.getUserName() + "'s password currently.");
         }
         else{
             dA.updateUserPassword(user, newPassword);

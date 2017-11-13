@@ -89,9 +89,9 @@ public class DataAdapter {
             if (resultSet.next()) {
                 order = new Order();
                 order.setOrderID(resultSet.getInt("OrderID"));
-                order.setCustomerName(resultSet.getString("Customer"));
-                order.setSubTotal(resultSet.getDouble("TotalCost"));
-                order.setOrderDate(resultSet.getDate("OrderDate"));
+                order.setSubTotal(resultSet.getDouble("SubTotal"));
+                order.setSubTotal(resultSet.getDouble("SubTotal"));
+                order.setChangeAmt(resultSet.getDouble("ChangeAmt"));
                 resultSet.close();
                 statement.close();
             }
@@ -119,12 +119,17 @@ public class DataAdapter {
 
     public boolean saveOrder(Order order) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO Order VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("SELECT MAX(OrderID) as MaxID FROM tblOrder");
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                order.setOrderID((resultSet.getInt("MaxID") + 1));
+            }
+            resultSet.close();
+            statement = connection.prepareStatement("INSERT INTO tblOrder VALUES (?, ?, ?, ?)");
             statement.setInt(1, order.getOrderID());
-            statement.setDate(2, order.getOrderDate());
-            statement.setString(3, order.getCustomerName());
-            statement.setDouble(4, order.getSubTotal());
-            statement.setDouble(5, order.getTaxRate());
+            statement.setDouble(2, order.getSubTotal());
+            statement.setDouble(3, order.getChangeAmt());
+            statement.setDouble(4, order.getTaxRate());
 
             statement.execute();    // commit to the database;
             statement.close();
@@ -135,7 +140,6 @@ public class DataAdapter {
                 statement.setInt(2, line.getProductID());
                 statement.setDouble(3, line.getCount());
                 statement.setDouble(4, line.getPrice());
-
                 statement.execute();    // commit to the database;
             }
             statement.close();
