@@ -41,6 +41,10 @@ public class SoftwareModelingDesignCourseProject {
     
     private AddUserController addUserController;
     
+    private BusinessReportController businessReportController;
+    
+    private BusinessReportView businessReportView = new BusinessReportView(null);
+    
     private ChangePasswordView changePasswordView = new ChangePasswordView(null);
     
         private CheckoutScreen checkoutScreen = new CheckoutScreen();
@@ -63,6 +67,15 @@ public class SoftwareModelingDesignCourseProject {
     public AddUserView getAddUserView(User user){
         addUserController.setUser(user);
         return addUserView;
+    }
+    
+    public BusinessReportView getBusinessReportView(User user){
+        businessReportController.setUser(user);
+        return businessReportView;
+    }
+    
+    public BusinessReportController getBusinessReportController(){
+        return businessReportController;
     }
 
     private ProductController productController;
@@ -125,6 +138,8 @@ public class SoftwareModelingDesignCourseProject {
         mainScreen = new UserLoginView();
         
         addUserView = new AddUserView();
+        
+        businessReportController = new BusinessReportController(businessReportView, dataAdapter, null);
         
         addUserController = new AddUserController(addUserView, dataAdapter, null);
         

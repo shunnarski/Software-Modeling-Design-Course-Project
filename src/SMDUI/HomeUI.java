@@ -73,6 +73,11 @@ public class HomeUI extends javax.swing.JFrame {
         });
 
         jButton5.setText("Business Report");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Add User");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +157,11 @@ public class HomeUI extends javax.swing.JFrame {
         this.setVisible(false);
         SoftwareModelingDesignCourseProject.getInstance().getAddUserView(user).setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.setVisible(false);
+        SoftwareModelingDesignCourseProject.getInstance().getBusinessReportView(user).setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
