@@ -10,7 +10,7 @@ package SMDUI;
  * @author alecshunnarah
  */
 public class User {
-     private int UserID;
+    private int UserID;
     private String Name;
     private String Password;
     private boolean isManager;
@@ -42,6 +42,10 @@ public class User {
     
     public boolean isManager(){
         return this.isManager;
+    }
+    
+    public void setIsManager(boolean isManager){
+        this.isManager = isManager;
     }
        
     

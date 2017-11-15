@@ -30,7 +30,7 @@ public class UserLoginController implements ActionListener {
     }
     
     public void UserLogin(){
-        user = dataAdapter.loadUser(userLoginView.getNameField(), userLoginView.getPasswordField());
+        user = dataAdapter.loadUser(userLoginView.getNameField().getText(), userLoginView.getPasswordField().getText());
         if(user == null){
             JOptionPane.showMessageDialog(null, "This user does not exist in the database!");
         }

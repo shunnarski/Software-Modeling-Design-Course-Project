@@ -37,11 +37,17 @@ public class SoftwareModelingDesignCourseProject {
 
     private UserLoginView mainScreen;
     
+    private AddUserView addUserView;
+    
+    private AddUserController addUserController;
+    
     private ChangePasswordView changePasswordView = new ChangePasswordView(null);
     
         private CheckoutScreen checkoutScreen = new CheckoutScreen();
 
     public UserLoginView getMainScreen() {
+        mainScreen.getNameField().setText("");
+        mainScreen.getPasswordField().setText("");
         return mainScreen;
     }
 
@@ -53,6 +59,11 @@ public class SoftwareModelingDesignCourseProject {
         checkoutController.setUser(user);
         return checkoutScreen;
     }
+     
+    public AddUserView getAddUserView(User user){
+        addUserController.setUser(user);
+        return addUserView;
+    }
 
     private ProductController productController;
 
@@ -63,6 +74,8 @@ public class SoftwareModelingDesignCourseProject {
     public ChangePasswordView getChangePasswordView(User user){
         changePasswordController.setUser(user);
         changePasswordView.setUser(user);
+        changePasswordView.getOldPassword().setText("");
+        changePasswordView.getNewPassword().setText("");
         return changePasswordView;
     }
     
@@ -110,6 +123,10 @@ public class SoftwareModelingDesignCourseProject {
         productController = new ProductController(productView, dataAdapter);
 
         mainScreen = new UserLoginView();
+        
+        addUserView = new AddUserView();
+        
+        addUserController = new AddUserController(addUserView, dataAdapter, null);
         
         checkoutController = new CheckoutController(checkoutScreen, dataAdapter, null);
         

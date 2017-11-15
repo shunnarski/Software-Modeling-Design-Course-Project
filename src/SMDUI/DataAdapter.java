@@ -6,6 +6,7 @@
 package SMDUI;
 
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class DataAdapter {
     private Connection connection;
@@ -171,6 +172,43 @@ public class DataAdapter {
             System.out.println("Database access error!");
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    public void addUser(String name, String password, boolean isManager){
+        try{
+            User user = new User();
+            PreparedStatement statement = connection.prepareStatement("SELECT MAX(UserID) as MaxID FROM User");
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                user.setUserID((resultSet.getInt("MaxID") + 1));
+            }
+            resultSet.close();
+            user.setUserName(name);
+            user.setPassword(password);
+            user.setIsManager(isManager);
+            
+            statement = connection.prepareStatement("SELECT * FROM User WHERE Name = '" + name + "' AND Password = '" + password + "'");
+            resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                JOptionPane.showMessageDialog(null, "A user already exists with that name and password");
+            }
+            else{
+                statement = connection.prepareStatement("INSERT INTO User VALUES (?, ?, ?, ?)");
+                statement.setInt(1, user.getUserID());
+                statement.setString(2, user.getUserName());
+                statement.setString(3, user.getPassword());
+                statement.setBoolean(4, isManager);
+                statement.execute();         
+            }
+           resultSet.close();
+           statement.close();
+                 
+        }
+        catch(SQLException e){
+            System.out.println("Database access error");
+            e.printStackTrace();
+            
         }
     }
     

@@ -29,7 +29,7 @@ public class ChangePasswordController implements ActionListener {
         if (e.getSource() == view.getCancelBtn())
             cancel();
         if (e.getSource() == view.getUpdateBtn())
-            updatePassword(view.getOldPassword(), view.getNewPassword());
+            updatePassword(view.getOldPassword().getText(), view.getNewPassword().getText());
 
     }
     
