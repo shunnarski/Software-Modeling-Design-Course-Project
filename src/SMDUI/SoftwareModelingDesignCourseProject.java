@@ -43,7 +43,7 @@ public class SoftwareModelingDesignCourseProject {
     
     private BusinessReportController businessReportController;
     
-    private BusinessReportView businessReportView = new BusinessReportView(null);
+    private BusinessReportView businessReportView = new BusinessReportView();
     
     private ChangePasswordView changePasswordView = new ChangePasswordView(null);
     

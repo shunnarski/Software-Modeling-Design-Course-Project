@@ -18,6 +18,7 @@ public class Product {
     private double Count;
     private String vendor;
     private Date expire;
+    private double revenue;
     
     // constructor for Product
     public Product(int ProductID, String Name, double Price, double Count, String Vendor){
@@ -25,7 +26,8 @@ public class Product {
         this.name = Name;
         this.Price = Price;
         this.Count = Count;
-        this.vendor = Vendor;       
+        this.vendor = Vendor;
+        this.revenue = 0;
     }
     
     public Product(){}
@@ -76,5 +78,13 @@ public class Product {
     
     public Date getExpirationDate() {
         return expire;
+    }
+    
+    public double getRevenue() {
+        return revenue;
+    }
+    
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
     }
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package SMDUI;
-
+import java.util.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -41,6 +41,61 @@ public class DataAdapter {
         }
         return null;
     }
+    
+    public List<Product> loadAllProducts() {
+        try {
+            double totalRevenue = 0;
+            double productCount = 0;
+            List<Product> productList = new ArrayList();
+            // List<OrderLine> orderLineList = new ArrayList();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Product"); //  " WHERE ProductID = " + id 
+            
+
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setProductID(resultSet.getInt("ProductID"));
+                product.setName(resultSet.getString("Name"));
+                product.setPrice(resultSet.getDouble("Price"));
+                product.setCount(resultSet.getDouble("Quantity"));
+                product.setVendor(resultSet.getString("Vendor"));
+                product.setExpirationDate(resultSet.getDate("ExpirationDate"));
+                
+                
+                
+                // NEED TO GET the total revenue for product
+                String queryTotalRevenue = "SELECT * FROM OrderLine WHERE ProductID = " + resultSet.getInt("ProductID");
+                Statement statement2 = connection.createStatement();
+                ResultSet resultSet2 = statement2.executeQuery(queryTotalRevenue);
+                
+                while (resultSet2.next()) {
+                    OrderLine line = new OrderLine();
+                    line.setCount(resultSet2.getInt("OrderLineCount"));
+                    productCount += line.getCount();
+                }
+                resultSet2.close();
+                statement2.close();
+                
+                totalRevenue = productCount * product.getPrice();
+                
+                product.setRevenue(totalRevenue);
+                
+                productList.add(product);
+                //resultSet.close();
+                //statement.close();
+                
+            }
+            resultSet.close();
+            statement.close();
+            return productList;
+            
+        } catch (SQLException e) {
+            System.out.println("Database access error!");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public boolean saveProduct(Product product) {
         try {
