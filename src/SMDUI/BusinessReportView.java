@@ -25,14 +25,15 @@ public class BusinessReportView extends JFrame {
 
         this.setTitle("Business Report");
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-        this.setSize(450, 600);
+        this.setSize(600, 600);
 
 
         items.addColumn("Product ID");
         items.addColumn("Name");
         items.addColumn("Price");
-        items.addColumn("Quantity");
+        items.addColumn("Inventory");
         items.addColumn("Total Revenue");
+        items.addColumn("Orders Made");
 
         JPanel panelOrder = new JPanel();
         panelOrder.setPreferredSize(new Dimension(485, 450));

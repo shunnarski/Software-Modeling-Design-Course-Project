@@ -46,6 +46,7 @@ public class DataAdapter {
         try {
             double totalRevenue = 0;
             double productCount = 0;
+            int numberOfOrders = 0;
             List<Product> productList = new ArrayList();
             // List<OrderLine> orderLineList = new ArrayList();
             Statement statement = connection.createStatement();
@@ -72,6 +73,7 @@ public class DataAdapter {
                     OrderLine line = new OrderLine();
                     line.setCount(resultSet2.getInt("OrderLineCount"));
                     productCount += line.getCount();
+                    ++numberOfOrders;
                 }
                 resultSet2.close();
                 statement2.close();
@@ -79,6 +81,7 @@ public class DataAdapter {
                 totalRevenue = productCount * product.getPrice();
                 
                 product.setRevenue(totalRevenue);
+                product.setNumTimesOrdered(numberOfOrders);
                 
                 productList.add(product);
                 //resultSet.close();

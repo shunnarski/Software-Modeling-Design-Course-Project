@@ -38,12 +38,13 @@ public class BusinessReportController implements ActionListener {
         }
         
         for (Product p : productList) {
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = p.getProductID();
             row[1] = p.getName();
             row[2] = p.getPrice();
             row[3] = p.getCount();
             row[4] = p.getRevenue();
+            row[5] = p.getNumTimesOrdered();
             this.view.addRow(row);
         } 
         
