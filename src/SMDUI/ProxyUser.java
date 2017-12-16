@@ -9,58 +9,79 @@ package SMDUI;
  *
  * @author alecshunnarah
  */
-public class User implements UserInterface {
+public class ProxyUser implements UserInterface {
+    private User user;
     private int UserID;
     private String Name;
     private String Password;
     private boolean isManager;
     
-    public User(int UserID, String Name, String Password, boolean isManager){
+    public ProxyUser(int UserID, String Name, String Password, boolean isManager){
         this.UserID = UserID;
         this.Name = Name;
         this.Password = Password;
         this.isManager = isManager;
     }
     
-    public User() {}
+    public ProxyUser() {}
     
     @Override
     public int getUserID(){
-        return UserID;
+        if(user == null){
+            user = new User();
+        }
+        return user.getUserID();
     }
     
     @Override
     public void setUserID(int ID){
-        UserID = ID;
+        if(user == null){
+            user = new User();
+        }
+        user.setUserID(ID);
     }
     
     @Override
     public String getUserName(){
-        return Name;
+        if(user == null){
+            user = new User();
+        }
+        return user.getUserName();
     }
     
     @Override
     public void setUserName(String name){
-        Name = name;
+        if(user == null)
+            user = new User();
+        user.setUserName(name);
     }
     
     @Override
     public boolean isManager(){
-        return this.isManager;
+        if(user == null){
+            user = new User();
+        }
+        return user.isManager();
     }
     
     @Override
     public void setIsManager(boolean isManager){
-        this.isManager = isManager;
+        if(user == null)
+            user = new User();
+        user.setIsManager(isManager);
     }
        
     @Override
     public String getPassword(){
-        return Password;
-    }
-    @Override
-    public void setPassword(String password){
-        Password = password;
+        if(user == null)
+            user = new User();
+        return user.getPassword();
     }
     
+    @Override
+    public void setPassword(String password){
+        if(user == null)
+            user = new User();
+        user.setPassword(password);
+    }
 }
