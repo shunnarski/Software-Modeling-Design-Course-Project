@@ -13,6 +13,7 @@ package SMDUI;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.sql.*;
+import java.io.*;
 
 public class SoftwareModelingDesignCourseProject {
      private static SoftwareModelingDesignCourseProject instance;   // Singleton pattern
@@ -152,7 +153,7 @@ public class SoftwareModelingDesignCourseProject {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
           SoftwareModelingDesignCourseProject.getInstance().getMainScreen().setVisible(true);
     }
 
