@@ -1,5 +1,5 @@
-	Total: 8.0
-	Amount Paid:6.540000000000001
-	Change: 1.459999999999999
+	Total: 2347.8
+	Amount Paid: 2347.7946
+	Change: 0.005400000000008731
 
 	Thank you for shopping with us today!
